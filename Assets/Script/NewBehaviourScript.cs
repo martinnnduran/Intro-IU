@@ -4,37 +4,34 @@ using UnityEngine;
 using TMPro;
 
 public class NewBehaviourScript : MonoBehaviour
-{
-    public TextMeshProUGUI txtSaludo;
-    public TMP_InputField inputNombre;
-    string nombreIngresado;
-    string saludo;
+{ 
+    public TMP_InputField inputClave;
+    public TextMeshProUGUI txtMensaje;
+    public TMP_InputField inputUsuario;
+
+    string clave = "a";
+    string usuario = "a";
 
     // Start is called before the first frame update
     void Start()
     {
-        txtSaludo.text = string.Empty;
+        txtMensaje.text = "";
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ComprobarClaveIngresada()
     {
-        
-    }
+        string claveIngresada = inputClave.text;
+        string usuarioIngresado = inputUsuario.text;
+        if (claveIngresada != clave || usuarioIngresado != usuario)
+        {
 
-    public void Saludar()
-    {
-        //Obtener el nombre del inputfield
-
-        nombreIngresado = inputNombre.text;
-
-        //Concatenar el nombre con el saludo
-
-        txtSaludo.text = "Hola " + nombreIngresado + "!";
-
-        //Mostrar el saludo en txtSaludo
-
-        txtSaludo.text = saludo;
-
+            txtMensaje.text = "Acceso denegado";
+            inputClave.text = "";
+            inputUsuario.text = "";
+        }
+        else
+        {
+            txtMensaje.text = "Bienvenido";
+        }
     }
 }
